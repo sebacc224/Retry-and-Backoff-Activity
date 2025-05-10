@@ -1,6 +1,7 @@
 # Arquitectura Asignada: Retry with Backoff
 
-El patrón **Retry with Backoff** mejora la estabilidad de una aplicación al reintentar automáticamente operaciones que fallan por errores transitorios, como problemas de red, servicios temporalmente no disponibles o sobrecarga del sistema.
+**Retry** es un patrón de resiliencia que consiste en volver a intentar una operación fallida después de un error temporal **BackOff**
+es una estrategia para espaciar los intentos de reintento en el tiempo, evita saturar el servicio que está fallando Entonces, el patrón **Retry with Backoff** mejora la estabilidad de una aplicación al reintentar automáticamente operaciones que fallan por errores transitorios, como problemas de red, servicios temporalmente no disponibles o sobrecarga del sistema.
 
 ---
 
