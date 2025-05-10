@@ -139,9 +139,9 @@ Inicia los contenedores de Docker con el siguiente comando:
 docker-compose up
 ```
 
-Esto iniciará tanto el servidor Flask como el cliente. El servidor Flask estará escuchando en el puerto `5000` y el cliente realizará solicitudes a dicho servidor.
+Esto iniciará tanto el servidor Flask como el cliente. El servidor Flask estará escuchando en el puerto `5000` y si el servidor responde con error (503), el cliente reintentará aplicando una política de backoff exponencial. Después de estos intentos, el cliente finalizará su ejecución.
 
-### 4. Realiza una petición al servidor
+### 4. Observar las solicitudes del servidor
 
 Una vez que los contenedores estén en ejecución, abre tu navegador y navega a:
 
@@ -149,7 +149,7 @@ Una vez que los contenedores estén en ejecución, abre tu navegador y navega a:
 http://localhost:5000/process
 ```
 
-El servidor procesará la solicitud y, debido a la implementación del patrón Retry with Backoff, el cliente intentará automáticamente volver a realizar la solicitud si recibe un error 503 (Servicio Temporalmente No Disponible).
+Se vera una respuesta del servidor (éxito o error aleatorio). Esto puede usarse para probar manualmente el comportamiento del servidor.
 
 ### 5. Detener los contenedores
 
@@ -169,7 +169,7 @@ Este archivo contiene un servidor Flask que simula un servicio que falla aleator
 
 ### `client/app.py`
 
-El cliente hace peticiones al servidor Flask y, si el servidor responde con un error 503, reintenta la solicitud siguiendo una política de backoff exponencial.
+El cliente hace una peticion al servidor Flask y, si el servidor responde con un error 503, reintenta la solicitud siguiendo una política de backoff exponencial.
 
 ### `docker-compose.yml`
 
