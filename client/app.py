@@ -8,7 +8,7 @@ def request_with_backoff():
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             print(f"Intento {attempt}...")
-            response = requests.get("http://server:5000/unstable")
+            response = requests.get("http://server:5000/process")
             if response.status_code == 200:
                 print("Respuesta exitosa:", response.text)
                 return
