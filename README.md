@@ -38,10 +38,6 @@ Este patrón es útil cuando:
 
 ## Problemas y Consideraciones
 
-### Idempotencia
-
-Las operaciones deben ser idempotentes: múltiples ejecuciones no deben modificar el estado del sistema de forma inesperada.
-
 ### Ancho de Banda
 
 Demasiados reintentos simultáneos pueden saturar la red y degradar el rendimiento.  
